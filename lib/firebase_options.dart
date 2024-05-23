@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web; // Ajuste aquí para soportar web
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -29,18 +26,18 @@ class DefaultFirebaseOptions {
         return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+          'DefaultFirebaseOptions have not been configured for macOS - '
+              'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+              'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+              'you can reconfigure this by running the FlutterFire CLI again.',
         );
       default:
         throw UnsupportedError(
@@ -48,6 +45,16 @@ class DefaultFirebaseOptions {
         );
     }
   }
+
+  static const FirebaseOptions web = FirebaseOptions(
+      apiKey: "AIzaSyChAHyTquA3dyzEn4wHIUZCzKl1KY8rbP8",
+      authDomain: "appecommerce-8ffe6.firebaseapp.com",
+      projectId: "appecommerce-8ffe6",
+      storageBucket: "appecommerce-8ffe6.appspot.com",
+      messagingSenderId: "878873479020",
+      appId: "1:878873479020:web:947eb691389a3ace369549",
+      measurementId: "G-SHXY7TBMFK"
+  );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyA5UYyjjaaAcFiCfqJgrXX9balLxUKNA9I',
@@ -63,6 +70,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '878873479020',
     projectId: 'appecommerce-8ffe6',
     storageBucket: 'appecommerce-8ffe6.appspot.com',
+    androidClientId: '878873479020-iks31roppcmd5he2te9bslfavdlj09sq.apps.googleusercontent.com',
+    iosClientId: '878873479020-f1uv7dbh29sqpfnv1ut15jeh8nbtvrtq.apps.googleusercontent.com',
     iosBundleId: 'com.example.appEcommerce',
   );
 }
