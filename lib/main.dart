@@ -1,10 +1,14 @@
+import 'package:app_ecommerce/modelos/tienda.dart';
 import 'package:app_ecommerce/pages/autoiden_page.dart';
+import 'package:app_ecommerce/pages/cart_page.dart';
+import 'package:app_ecommerce/pages/home_page.dart';
 import 'package:app_ecommerce/pages/login_page.dart';
 import 'package:app_ecommerce/pages/register_page.dart';  // Asegúrate de importar RegisterPage
 import 'package:app_ecommerce/themes/light_mode.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
 import 'pages/intro_page.dart';
@@ -16,7 +20,12 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+    runApp(
+        ChangeNotifierProvider(
+          create: (context) => Tienda(),
+          child: const MyApp(),
+        ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -41,6 +50,9 @@ class MyApp extends StatelessWidget {
           },
         ),
         '/autoiden_page': (context) => const AutoidenPage(),
+        '/cart_page': (context) => const CartPage(),
+        '/home_page': (context) => HomePage(),
+
       },
     );
   }
